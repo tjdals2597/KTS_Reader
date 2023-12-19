@@ -12,7 +12,8 @@ prompt = []
 def index():
     if request.method == "POST":
         keyword = request.form["keyword"]
-        prompt.append({"role": "user", "content":keyword})
+        sentence = f"Write a Short story in Korean on topic '{keyword}'."
+        prompt.append({"role": "user", "content":sentence})
         response = openai.chat.completions.create(
             model = "gpt-3.5-turbo",
             messages = prompt,
